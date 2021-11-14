@@ -11,7 +11,7 @@ import java.util.Map;
 public class TopicReceiverHandlerWoman {
 
     @RabbitHandler
-    public void process(Map<String, Object> testMessage) {
-        System.out.println("TopicManReceiverWoman消费者收到消息  : " + testMessage.toString());
+    public void process(String testMessage) {
+        System.out.println("TopicManReceiverWoman消费者收到消息  : " + testMessage);
     }
 }
