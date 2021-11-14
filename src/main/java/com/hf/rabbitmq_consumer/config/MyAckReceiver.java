@@ -38,9 +38,9 @@ public class MyAckReceiver implements ChannelAwareMessageListener {
 
             //第二个参数，手动确认可以被批处理，当该参数为 true 时，则可以一次性确认 delivery_tag 小于等于传入值的所有消息
             channel.basicAck(deliveryTag, true);
-            //第二个参数，true会重新放回队列，所以需要自己根据业务逻辑判断什么时候使用拒绝
-            // channel.basicReject(deliveryTag, true);
         } catch (Exception e) {
+            // channel.basicReject(deliveryTag, true);  拒绝消费当前消息，如果第二参数传入true，就是将数据重新丢回队列里，那么下次还会消费这消息。
+            // 设置false，就是告诉服务器，我已经知道这条消息数据了，因为一些原因拒绝它，而且服务器也把这个消息丢掉就行。 下次不想再消费这条消息了。
             channel.basicReject(deliveryTag, false);
             e.printStackTrace();
         }
