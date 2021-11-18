@@ -2,7 +2,9 @@ package com.hf.rabbitmq_consumer.config;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.MessageProperties;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.stereotype.Component;
@@ -20,8 +22,10 @@ public class MyAckReceiver implements ChannelAwareMessageListener {
         try {
 
             byte[] bytes = message.getBody();
-            String result = new String(bytes);
+            String result = new String(bytes, "UTF-8");
             JSONObject deserialize = JSON.parseObject(result);
+
+            channel.basicPublish("", "TestDirectQueue", MessageProperties.PERSISTENT_TEXT_PLAIN,  message.getBody());
 
             if ("TestDirectQueue".equals(message.getMessageProperties().getConsumerQueue())) {
                 System.out.println("消费的消息来自的队列名为：" + message.getMessageProperties().getConsumerQueue());
