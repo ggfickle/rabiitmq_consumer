@@ -12,7 +12,14 @@ spring:
     port: 5672
     username: admin
     password: admin
-nacos:
-  config:
-    server-addr:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.136.41.79
+        port: 8848
+#        namespace: 7745e646-e9f6-438d-b2d4-ca9d43afbb15
+      config:
+        server-addr: 8.136.41.79:8848
+#        namespace: 7745e646-e9f6-438d-b2d4-ca9d43afbb15
+        file-extension: yaml
 
