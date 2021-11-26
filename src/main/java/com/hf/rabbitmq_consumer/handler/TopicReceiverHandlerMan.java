@@ -1,5 +1,6 @@
 package com.hf.rabbitmq_consumer.handler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -9,10 +10,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RabbitListener(queues = "topic.man")
+@Slf4j
 public class TopicReceiverHandlerMan {
 
     @RabbitHandler
     public void process(String json) {
-        System.out.println("TopicManReceiverMan消费者收到消息  : " + json);
+        log.info("TopicManReceiverMan消费者收到消息  : " + json);
     }
 }

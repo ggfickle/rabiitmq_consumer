@@ -1,15 +1,17 @@
 package com.hf.rabbitmq_consumer.handler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "TestDirectQueue")
+//@RabbitListener(queues = "TestDirectQueue")
+@Slf4j
 public class DirectReceiverTwo {
 
-    @RabbitHandler
+//    @RabbitHandler
     public void receiveMessage(String json) {
-        System.out.println("第二个消费者接收到消息" + json);
+        log.info("第二个消费者接收到消息" + json);
     }
 }

@@ -1,6 +1,7 @@
 package com.hf.rabbitmq_consumer.config;
 
 import org.springframework.amqp.core.AcknowledgeMode;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class MessageListenerConfig {
 
 
         //另一种设置队列的方法,如果使用这种情况,那么要设置多个,就使用addQueues
-        //container.setQueues(new Queue("TestDirectQueue",true));
-        //container.addQueues(new Queue("TestDirectQueue2",true));
+//        container.setQueues(new Queue("TestDirectQueue",true));
+//        container.addQueues(new Queue("topic.woman",true));
         //container.addQueues(new Queue("TestDirectQueue3",true));
         container.setMessageListener(myAckReceiver);
 
