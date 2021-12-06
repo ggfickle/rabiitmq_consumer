@@ -22,4 +22,3 @@ spring:
         server-addr: 8.136.41.79:8848
 #        namespace: 7745e646-e9f6-438d-b2d4-ca9d43afbb15
         file-extension: yaml
-

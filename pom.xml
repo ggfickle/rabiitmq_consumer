@@ -73,6 +73,12 @@
             <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.7.0, 7.7.99]</version>
+        </dependency>
     </dependencies>
 
     <build>
